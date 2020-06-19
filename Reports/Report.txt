@@ -1,0 +1,32 @@
+N = 300000
+BSTree: Add random, s = 0,101441
+BSTreeSeq: Add sequentially, s = 155,812971
+BSTreeRandom: Find N/10 items, s = 0,013356
+BSTreeSeq: Find N/10 items, s = 15,878428
+BSTreeRandom: Remove N/10 items, s = 0,016787
+BSTreeSeq: Remove N/10 items, s = 21,015997
+
+N = 300000
+AVLTree: Add random, s = 0,685931
+AVLTreeSeq: Add sequentially, s = 0,552679
+AVLTreeRandom: Find N/10 items, s = 0,011157
+AVLTreeSeq: Find N/10 items, s = 0,010948
+AVLTreeRandom: Remove N/10 items, s = 0,079678
+AVLTreeSeq: Remove N/10 items, s = 0,069694
+
+
+N = 500000
+BSTree: Add random, s = 0,208787
+BSTreeSeq: Add sequentially, s = 519,571172
+BSTreeRandom: Find N/10 items, s = 0,032193
+BSTreeSeq: Find N/10 items, s = 50,358511
+BSTreeRandom: Remove N/10 items, s = 0,034053
+BSTreeSeq: Remove N/10 items, s = 60,183338
+
+N = 500000
+AVLTree: Add random, s = 1,236518
+AVLTreeSeq: Add sequentially, s = 0,954276
+AVLTreeRandom: Find N/10 items, s = 0,021366
+AVLTreeSeq: Find N/10 items, s = 0,019575
+AVLTreeRandom: Remove N/10 items, s = 0,145618
+AVLTreeSeq: Remove N/10 items, s = 0,122138
