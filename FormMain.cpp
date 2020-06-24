@@ -1,5 +1,6 @@
 ﻿//---------------------------------------------------------------------------
 #include <chrono>
+#include <set>
 
 #include <vcl.h>
 #pragma hdrstop
@@ -315,7 +316,7 @@ void __fastcall TfrmMain::btnTestClick(TObject *Sender)
 		}
 		TimeEnd = ClockType::now();
 		Time = double(std::chrono::duration_cast<std::chrono::nanoseconds>(TimeEnd - TimeStart).count()) / 1.0e9;
-		Memo->Lines->Add("BSTree: Add random, s = " + FloatToStrF(Time, ffFixed, 20, 6));
+		Memo->Lines->Add("BSTreeRandom: Add random, s = " + FloatToStrF(Time, ffFixed, 20, 6));
 
 
 		TimeStart = ClockType::now();
@@ -414,7 +415,7 @@ void __fastcall TfrmMain::btnTestClick(TObject *Sender)
 		}
 		TimeEnd = ClockType::now();
 		Time = double(std::chrono::duration_cast<std::chrono::nanoseconds>(TimeEnd - TimeStart).count()) / 1.0e9;
-		Memo->Lines->Add("AVLTree: Add random, s = " + FloatToStrF(Time, ffFixed, 20, 6));
+		Memo->Lines->Add("AVLTreeRandom: Add random, s = " + FloatToStrF(Time, ffFixed, 20, 6));
 
 
 		TimeStart = ClockType::now();
@@ -492,6 +493,102 @@ void __fastcall TfrmMain::btnTestClick(TObject *Sender)
 
 //		delete AVLTreeRandom;
 //		delete AVLTreeSeq;
+	}
+	else if (rbRBTree->Checked)
+	{
+		std::set<int> RBTreeRandom, RBTreeSeq;
+
+		// Обычно std::set - это RBTree, но здесь, в bcc64(Clang) точно не знаю.
+
+        TimeStart = ClockType::now();
+
+		for (size_t i = 0; i < N; i++)
+		{
+			int v = Gen_ToAdd.GetNext();
+
+			if ( auto [it, b] = RBTreeRandom.emplace(v); !b )
+			{
+				ShowMessage(L"Такой элемент уже есть в дереве");
+				return;
+			}
+		}
+		TimeEnd = ClockType::now();
+		Time = double(std::chrono::duration_cast<std::chrono::nanoseconds>(TimeEnd - TimeStart).count()) / 1.0e9;
+		Memo->Lines->Add("RBTreeRandom: Add random, s = " + FloatToStrF(Time, ffFixed, 20, 6));
+
+
+		TimeStart = ClockType::now();
+		for (size_t i = 0; i < N; i++)
+		{
+			if ( auto [it, b] = RBTreeSeq.emplace(i); !b )
+			{
+				ShowMessage(L"Такой элемент уже есть в дереве");
+				return;
+			}
+		}
+		TimeEnd = ClockType::now();
+		Time = double(std::chrono::duration_cast<std::chrono::nanoseconds>(TimeEnd - TimeStart).count()) / 1.0e9;
+		Memo->Lines->Add("RBTreeSeq: Add sequentially, s = " + FloatToStrF(Time, ffFixed, 20, 6));
+
+
+		TimeStart = ClockType::now();
+		for (size_t i = 0; i < N/10; i++)
+		{
+			if ( RBTreeRandom.find(Gen_ToFind.GetNext()) == RBTreeRandom.end() )
+			{
+				ShowMessage(L"Такой элемент не найден");
+				return;
+			}
+		}
+		TimeEnd = ClockType::now();
+		Time = double(std::chrono::duration_cast<std::chrono::nanoseconds>(TimeEnd - TimeStart).count()) / 1.0e9;
+		Memo->Lines->Add("RBTreeRandom: Find N/10 items, s = " + FloatToStrF(Time, ffFixed, 20, 6));
+
+
+
+		TimeStart = ClockType::now();
+		for (size_t i = 0; i < N/10; i++)
+		{
+			if ( RBTreeSeq.find(Gen_ToFind.GetNext()) == RBTreeRandom.end()  )
+			{
+				ShowMessage(L"Такой элемент не найден");
+				return;
+			}
+		}
+		TimeEnd = ClockType::now();
+		Time = double(std::chrono::duration_cast<std::chrono::nanoseconds>(TimeEnd - TimeStart).count()) / 1.0e9;
+		Memo->Lines->Add("RBTreeSeq: Find N/10 items, s = " + FloatToStrF(Time, ffFixed, 20, 6));
+
+
+		TimeStart = ClockType::now();
+		for (size_t i = 0; i < N/10; i++)
+		{
+			if ( !RBTreeRandom.erase(Gen_ToDel.GetNext()) )
+			{
+				ShowMessage(L"Такой элемент не найден");
+				return;
+			}
+		}
+		TimeEnd = ClockType::now();
+		Time = double(std::chrono::duration_cast<std::chrono::nanoseconds>(TimeEnd - TimeStart).count()) / 1.0e9;
+		Memo->Lines->Add("RBTreeRandom: Remove N/10 items, s = " + FloatToStrF(Time, ffFixed, 20, 6));
+
+
+
+		TimeStart = ClockType::now();
+		for (size_t i = 0; i < N/10; i++)
+		{
+			if ( !RBTreeSeq.erase(Gen_ToDel.GetNext()) )
+			{
+				ShowMessage(L"Такой элемент не найден");
+				return;
+			}
+		}
+		TimeEnd = ClockType::now();
+		Time = double(std::chrono::duration_cast<std::chrono::nanoseconds>(TimeEnd - TimeStart).count()) / 1.0e9;
+		Memo->Lines->Add("RBTreeSeq: Remove N/10 items, s = " + FloatToStrF(Time, ffFixed, 20, 6));
+
+
 	}
 
 }

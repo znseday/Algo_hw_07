@@ -21,7 +21,6 @@ object frmMain: TfrmMain
     Height = 444
     Align = alClient
     TabOrder = 0
-    ExplicitWidth = 1128
     object imgDraw: TImage
       Left = 1
       Top = 1
@@ -44,9 +43,9 @@ object frmMain: TfrmMain
     ExplicitLeft = 1
     ExplicitTop = -5
     object Label1: TLabel
-      Left = 588
-      Top = 135
-      Width = 7
+      Left = 391
+      Top = 144
+      Width = 13
       Height = 13
       Caption = 'N'
     end
@@ -131,10 +130,10 @@ object frmMain: TfrmMain
       OnClick = btnFindClick
     end
     object GroupBox1: TGroupBox
-      Left = 494
+      Left = 504
       Top = 21
       Width = 171
-      Height = 105
+      Height = 136
       Caption = #1056#1072#1073#1086#1090#1072#1090#1100' '#1089
       TabOrder = 9
       object rbBSTree: TRadioButton
@@ -163,6 +162,14 @@ object frmMain: TfrmMain
         Caption = #1044#1077#1082#1072#1088#1090#1086#1074#1086' '#1076#1077#1088#1077#1074#1086
         Enabled = False
         TabOrder = 2
+      end
+      object rbRBTree: TRadioButton
+        Left = 16
+        Top = 93
+        Width = 113
+        Height = 17
+        Caption = 'std::set (RBTree)'
+        TabOrder = 3
       end
     end
     object Memo: TMemo
@@ -203,8 +210,8 @@ object frmMain: TfrmMain
       OnClick = btnSmallRandomClick
     end
     object EditN: TEdit
-      Left = 600
-      Top = 132
+      Left = 409
+      Top = 141
       Width = 73
       Height = 21
       MaxLength = 10
