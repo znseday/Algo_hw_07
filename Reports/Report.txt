@@ -14,6 +14,14 @@ AVLTreeSeq: Find N/10 items, s = 0,010948
 AVLTreeRandom: Remove N/10 items, s = 0,079678
 AVLTreeSeq: Remove N/10 items, s = 0,069694
 
+N = 300000
+RBTreeRandom: Add random, s = 0,115699
+RBTreeSeq: Add sequentially, s = 0,041576
+RBTreeRandom: Find N/10 items, s = 0,008600
+RBTreeSeq: Find N/10 items, s = 0,007455
+RBTreeRandom: Remove N/10 items, s = 0,022072
+RBTreeSeq: Remove N/10 items, s = 0,017134
+
 
 N = 500000
 BSTree: Add random, s = 0,208787
@@ -30,3 +38,28 @@ AVLTreeRandom: Find N/10 items, s = 0,021366
 AVLTreeSeq: Find N/10 items, s = 0,019575
 AVLTreeRandom: Remove N/10 items, s = 0,145618
 AVLTreeSeq: Remove N/10 items, s = 0,122138
+
+N = 500000
+RBTreeRandom: Add random, s = 0,230293
+RBTreeSeq: Add sequentially, s = 0,070514
+RBTreeRandom: Find N/10 items, s = 0,017073
+RBTreeSeq: Find N/10 items, s = 0,016231
+RBTreeRandom: Remove N/10 items, s = 0,042179
+RBTreeSeq: Remove N/10 items, s = 0,033177
+
+N = 1000000
+RBTreeRandom: Add random, s = 0,623924
+RBTreeSeq: Add sequentially, s = 0,145586
+RBTreeRandom: Find N/10 items, s = 0,042412
+RBTreeSeq: Find N/10 items, s = 0,037095
+RBTreeRandom: Remove N/10 items, s = 0,100132
+RBTreeSeq: Remove N/10 items, s = 0,078948
+
+N = 5000000
+RBTreeRandom: Add random, s = 4,554372
+RBTreeSeq: Add sequentially, s = 0,816161
+RBTreeRandom: Find N/10 items, s = 0,293079
+RBTreeSeq: Find N/10 items, s = 0,246541
+RBTreeRandom: Remove N/10 items, s = 0,647838
+RBTreeSeq: Remove N/10 items, s = 0,490059
+
